@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import './App.css';
+import './styles/App.css';
 import TodoBoard from './components/TodoBoard';
 import TodoForm from './components/TodoForm';
 import { createEmptyTodo, randomPinColor, randomRotation } from './utils/todoUtils';

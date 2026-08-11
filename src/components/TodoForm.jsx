@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import '../styles/todoForm.css';
 
 export default function TodoForm({ todo, onSave, onCancel }) {
   const [title, setTitle] = useState(todo.title);

@@ -1,3 +1,4 @@
+import '../styles/todoBoard.css';
 import TodoCard from './TodoCard';
 
 export default function TodoBoard({ todos, onMove, onEdit, onDelete }) {
