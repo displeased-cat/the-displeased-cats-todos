@@ -38,7 +38,6 @@
   line-height: 1;
 }
 
-.addButton,
 .primaryButton,
 .secondaryButton,
 .iconButton {
@@ -47,7 +46,7 @@
   font: inherit;
 }
 
-.addButton {
+.primaryButton {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -74,7 +73,6 @@
 }
 
 .toggleButton,
-.addButton,
 .primaryButton,
 .secondaryButton,
 .iconButton {
