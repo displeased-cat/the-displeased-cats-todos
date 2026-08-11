@@ -29,10 +29,35 @@ jobs:
       - name: Build
         run: npm run build
       
-      - name: Deploy to GitHub Pages
+      - name: Prepare and push built docs branch
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        uses: JamesIves/github-pages-deploy-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          BRANCH=github-pages-deploy-action-${GITHUB_SHA}
+          git switch -c "$BRANCH" || git checkout -b "$BRANCH"
+          rm -rf docs || true
+          mkdir -p docs
+          rsync -a --delete dist/ docs/
+          git add docs
+          if git diff --staged --quiet; then
+            echo "No changes to deploy"
+            exit 0
+          fi
+          git commit -m "Deploy docs from $GITHUB_SHA"
+          git push origin "$BRANCH"
+
+      - name: Create Pull Request for docs
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: peter-evans/create-pull-request@v4
         with:
-          branch: master
-          folder: dist
-          target-folder: docs
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Deploy docs from ${{ github.sha }}"
+          title: "Deploy docs: ${{ github.sha }}"
+          body: "Automated docs deployment from workflow"
+          base: master
+          branch: github-pages-deploy-action-${{ github.sha }}
+          labels: deploy
