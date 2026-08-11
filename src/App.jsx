@@ -37,6 +37,7 @@ function App() {
     }
   });
   const [editorTodo, setEditorTodo] = useState(null);
+  const [disableBackgroundImages, setDisableBackgroundImages] = useState(false);
   const nextTodoId = useMemo(
     () => () => `todo-${Date.now()}-${Math.random().toString(16).slice(2)}`,
     []
@@ -52,6 +53,10 @@ function App() {
 
   function handleAddTodo() {
     setEditorTodo(createEmptyTodo());
+  }
+
+  function handleToggleBackgroundImage() {
+    setDisableBackgroundImages(current => !current);
   }
 
   function handleEditTodo(id) {
@@ -84,7 +89,7 @@ function App() {
   }
 
   return (
-    <div className="AppShell">
+    <div className={`AppShell ${disableBackgroundImages ? 'noBackground' : ''}`}>
       <aside className="AppSidebar">
         <div className="AppTitle">
           <span className="AppLabel">the displeased cats</span>
@@ -98,8 +103,18 @@ function App() {
       </aside>
 
       <main className="AppMain">
-        <TodoBoard todos={todos} onMove={handleMoveTodo} onEdit={handleEditTodo} onDelete={handleDeleteTodo} />
+        <TodoBoard
+          todos={todos}
+          onMove={handleMoveTodo}
+          onEdit={handleEditTodo}
+          onDelete={handleDeleteTodo}
+          disableBackgroundImages={disableBackgroundImages}
+        />
       </main>
+
+      <button type="button" className="potatoButton" onClick={handleToggleBackgroundImage}>
+        potato pc
+      </button>
 
       {editorTodo && <TodoForm todo={editorTodo} onSave={handleSaveTodo} onCancel={handleCancelEdit} />}
     </div>

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import '../styles/todoCard.css';
 
-export default function TodoCard({ todo, onMove, onEdit, onDelete }) {
+export default function TodoCard({ todo, onMove, onEdit, onDelete, disableBackgroundImages }) {
   const [position, setPosition] = useState({ x: todo.x, y: todo.y });
   const [dragging, setDragging] = useState(false);
   const pointerData = useRef({ startX: 0, startY: 0, startLeft: 0, startTop: 0 });
@@ -46,7 +46,7 @@ export default function TodoCard({ todo, onMove, onEdit, onDelete }) {
 
   return (
     <article
-      className={`TodoCard ${dragging ? 'dragging' : ''}`}
+      className={`TodoCard ${dragging ? 'dragging' : ''}${disableBackgroundImages ? ' noBackground' : ''}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
