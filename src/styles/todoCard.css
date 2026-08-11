@@ -3,7 +3,7 @@
   width: 250px;
   padding: 18px 18px 16px;
   background: radial-gradient(circle at top left, #fff8b6 0%, #f5e294 55%, #f4d967 100%);
-  background-image: url("public/images/todobackground.jpg");
+  background-image: url("/images/todobackground.jpg");
   background-size: contain;
   background-repeat: repeat;
   background-blend-mode: multiply;
