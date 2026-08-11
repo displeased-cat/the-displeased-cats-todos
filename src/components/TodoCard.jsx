@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import '../styles/todoCard.css';
 
 export default function TodoCard({ todo, onMove, onEdit, onDelete }) {
   const [position, setPosition] = useState({ x: todo.x, y: todo.y });

@@ -1,0 +1,5 @@
+.TodoBoard {
+  position: relative;
+  min-height: 100vh;
+  padding: 36px;
+}
