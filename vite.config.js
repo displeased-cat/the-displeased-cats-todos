@@ -5,9 +5,6 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   base: '/the-displeased-cats-todos/',
   plugins: [react()],
-  build: {
-  outDir: 'docs',
-},
   test: {
     globals: true,
     environment: 'jsdom',
