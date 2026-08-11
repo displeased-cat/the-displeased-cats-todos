@@ -96,7 +96,7 @@ function App() {
           <h1>todos</h1>
           <span>by Luca</span>
         </div>
-        <button className="addButton" type="button" onClick={handleAddTodo}>
+        <button className="primaryButton" type="button" onClick={handleAddTodo}>
           <span className="buttonIcon">＋</span>
           Add todo
         </button>
@@ -112,7 +112,7 @@ function App() {
         />
       </main>
 
-      <button type="button" className="potatoButton" onClick={handleToggleBackgroundImage}>
+      <button type="button" className="primaryButton potatoButton" onClick={handleToggleBackgroundImage}>
         potato pc
       </button>
 
