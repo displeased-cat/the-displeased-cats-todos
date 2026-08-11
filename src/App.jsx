@@ -95,7 +95,6 @@ function App() {
           <span className="buttonIcon">＋</span>
           Add todo
         </button>
-        <p className="AppDescription">Drag each note freely across the board. Edit or remove any todo as needed.</p>
       </aside>
 
       <main className="AppMain">
