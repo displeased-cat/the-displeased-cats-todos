@@ -16,15 +16,6 @@ const initialTodos = [
     rotation: -2,
     pinColor: '#d23f4d',
   },
-  {
-    id: 'todo-2',
-    title: 'Write the scroll',
-    details: 'Draft a note to prove the cat was displeased today.',
-    x: 420,
-    y: 220,
-    rotation: 3,
-    pinColor: '#3f5bd2',
-  },
 ];
 
 function App() {
@@ -98,6 +89,7 @@ function App() {
         <div className="AppTitle">
           <span className="AppLabel">the displeased cats</span>
           <h1>todos</h1>
+          <span>by Luca</span>
         </div>
         <button className="addButton" type="button" onClick={handleAddTodo}>
           <span className="buttonIcon">＋</span>
