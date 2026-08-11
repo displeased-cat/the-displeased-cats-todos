@@ -1,7 +1,7 @@
 import '../styles/todoBoard.css';
 import TodoCard from './TodoCard';
 
-export default function TodoBoard({ todos, onMove, onEdit, onDelete }) {
+export default function TodoBoard({ todos, onMove, onEdit, onDelete, disableBackgroundImages }) {
   return (
     <section className="TodoBoard" aria-label="todo board">
       {todos.map(todo => (
@@ -11,6 +11,7 @@ export default function TodoBoard({ todos, onMove, onEdit, onDelete }) {
           onMove={onMove}
           onEdit={onEdit}
           onDelete={onDelete}
+          disableBackgroundImages={disableBackgroundImages}
         />
       ))}
     </section>
