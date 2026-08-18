@@ -6,7 +6,7 @@ export default defineConfig({
   base: '/the-displeased-cats-todos/',
   plugins: [react()],
   build: {
-    outDir: 'docs',
+    outDir: 'dist',
   },
   test: {
     globals: true,
