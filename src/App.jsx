@@ -57,7 +57,7 @@ function App() {
   useEffect(() => {
     try {
       window.localStorage.setItem(storageKeyTodo, JSON.stringify(todos));
-      window.localStorage.setItem(storageKeyBackground, JSON.stringify(disableBackgroundImages));
+      window.localStorage.setItem(storageKeyBackground, JSON.stringify(setDisableBackgroundImages));
       
     } catch {
       // Ignore storage errors.
