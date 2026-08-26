@@ -45,6 +45,9 @@ function App() {
 
       return JSON.parse(stored);
     }
+    catch {
+      // Ignore storage errors.
+    }
   });
   const nextTodoId = useMemo(
     () => () => `todo-${Date.now()}-${Math.random().toString(16).slice(2)}`,
