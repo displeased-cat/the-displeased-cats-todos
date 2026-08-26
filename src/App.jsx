@@ -42,12 +42,10 @@ function App() {
     try {
       const stored = window.localStorage.getItem(storageKeyBackground);
       if(!stored) return false;
-console.log(stored);
       return JSON.parse(stored);
     }
     catch {
       // Ignore storage errors.
-      console.log(cat
     }
   });
   const nextTodoId = useMemo(
