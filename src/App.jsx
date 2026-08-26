@@ -42,11 +42,12 @@ function App() {
     try {
       const stored = window.localStorage.getItem(storageKeyBackground);
       if(!stored) return false;
-
+console.log(stored);
       return JSON.parse(stored);
     }
     catch {
       // Ignore storage errors.
+      console.log(cat
     }
   });
   const nextTodoId = useMemo(
@@ -57,7 +58,7 @@ function App() {
   useEffect(() => {
     try {
       window.localStorage.setItem(storageKeyTodo, JSON.stringify(todos));
-      window.localStorage.setItem(storageKeyBackground, JSON.stringify(setDisableBackgroundImages));
+      window.localStorage.setItem(storageKeyBackground, JSON.stringify(disableBackgroundImages));
       
     } catch {
       // Ignore storage errors.
