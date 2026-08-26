@@ -45,7 +45,7 @@ function App() {
       return JSON.parse(stored);
     }
     catch {
-      // Ignore storage errors.
+      return false;
     }
   });
   const nextTodoId = useMemo(
