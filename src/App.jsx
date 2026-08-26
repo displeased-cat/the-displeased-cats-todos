@@ -4,7 +4,8 @@ import TodoBoard from './components/TodoBoard';
 import TodoForm from './components/TodoForm';
 import { createEmptyTodo, randomPinColor, randomRotation } from './utils/todoUtils';
 
-const storageKey = 'displeased-cats-todos';
+const storageKeyTodo = 'displeased-cats-todos';
+const storageKeyBackground = "background";
 
 const initialTodos = [
   {
@@ -22,7 +23,7 @@ function App() {
   const [todos, setTodos] = useState(() => {
     if (typeof window === 'undefined') return initialTodos;
     try {
-      const stored = window.localStorage.getItem(storageKey);
+      const stored = window.localStorage.getItem(storageKeyTodo);
       if (!stored) return initialTodos;
       return JSON.parse(stored).map(todo => ({
         ...todo,
@@ -37,7 +38,14 @@ function App() {
     }
   });
   const [editorTodo, setEditorTodo] = useState(null);
-  const [disableBackgroundImages, setDisableBackgroundImages] = useState(false);
+  const [disableBackgroundImages, setDisableBackgroundImages] = useState(() => {
+    try {
+      const stored = window.localStorage.getItem(storageKeyBackground);
+      if(!stored) return false;
+
+      return JSON.parse(stored);
+    }
+  });
   const nextTodoId = useMemo(
     () => () => `todo-${Date.now()}-${Math.random().toString(16).slice(2)}`,
     []
@@ -45,7 +53,9 @@ function App() {
 
   useEffect(() => {
     try {
-      window.localStorage.setItem(storageKey, JSON.stringify(todos));
+      window.localStorage.setItem(storageKeyTodo, JSON.stringify(todos));
+      window.localStorage.setItem(storageKeyBackground, JSON.stringify(disableBackgroundImages));
+      
     } catch {
       // Ignore storage errors.
     }
